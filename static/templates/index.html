@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load leaflet_tags %}
+
+
+{% block index %}
+
+<head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+</head>
+
+<style>
+
+    .leaflet-container {  /* all maps */
+        width:  800px;
+        height: 600px;
+    }
+</style>
+<script type="text/javascript">
+    function map_init_basic (map, options) {
+        {% for k,v in poi_departs.iteritems %}
+        L.marker({{ v }}).addTo(map) ;
+        {% endfor %}
+        {% for k,v in lines.iteritems %}
+        L.polyline({{ v }}).addTo(map) ;
+        {% endfor %}
+    }
+</script>
+
+<body>
+    {% leaflet_map "yourmap" callback="window.map_init_basic"%}
+</body>
+
+{% endblock %}

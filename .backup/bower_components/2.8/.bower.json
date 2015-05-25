@@ -1,0 +1,12 @@
+{
+  "name": "2.8",
+  "_cacheHeaders": {
+    "Content-Length": "36426",
+    "Content-Type": "text/html; charset=utf-8"
+  },
+  "main": "index.1",
+  "_source": "https://pypi.python.org/pypi/Pillow/2.8.1",
+  "_target": "*",
+  "_originalSource": "https://pypi.python.org/pypi/Pillow/2.8.1",
+  "_direct": true
+}
