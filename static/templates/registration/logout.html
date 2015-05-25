@@ -1,6 +1,65 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block jumbotron %}
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+          <div class='col-sm-6'>
+        <h1>Le temps vous appartient</h1>
+        <p>HurryUp! est l'unique platforme qui vous garantie d'être toujours à l'heure à vos rendez-vous.</p>
+        <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">En savoir plus &raquo;</a></p> -->
+      </div>
+          <div class='col-sm-6'>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/-jBfb33_KHU" frameborder="0" allowfullscreen></iframe>
+          </div>
+          </div>
+    </div>
+
+{% endblock %}
 
 {% block content %}
-<p class="alert alert-info" class='col-sm-6 col-sm-offset-3' role="alert">Vous êtes déconnecté</p>
+
+<div class="col-md-4 text-center">
+<span class="fa-stack fa-lg" style='font-size:4em' >
+  <i class="fa fa-circle fa-stack-2x" ></i>
+  <i class="fa fa-road fa-stack-1x fa-inverse"></i>
+</span>
+    
+          <h2>Trajets</h2>
+          <p>Choississez un lieu de départ,votre destination et une heure d'arrivée précise, et Hurry Up! se chargera d'assurer votre ponctualité vis-à-vis de votre employeur! </p>
+    
+          <!-- <p><a class="btn btn-default" href="#" role="button">En savoir plus &raquo;</a></p> --> 
+        </div>
+        <div class="col-md-4 text-center">
+            
+<span class="fa-stack fa-lg" style='font-size:4em' >
+  <i class="fa fa-circle fa-stack-2x" ></i>
+  <i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
+</span>
+
+          <h2>Retard</h2>
+          <p>Avec Hurry Up! changez vos habitudes : partez à l'heure et arrivez à l'heure, les retards ne feront plus partie de votre quotidien! </p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">En savoir plus &raquo;</a></p> --> 
+       </div>
+        <div class="col-md-4 text-center">
+           
+<span class="fa-stack fa-lg" style='font-size:4em' >
+  <i class="fa fa-circle fa-stack-2x" ></i>
+  <i class="fa fa-cloud-download fa-stack-1x fa-inverse"></i>
+</span>
+          <h2>Révolution</h2>
+          <p>En mêlant système de réveil et itinéraires en ligne, Hurry Up! est le premier logiciel vous permettant de n'avoir qu'un seul appareil à régler le matin!</p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">En savoir plus &raquo;</a></p> --> 
+        </div>
+
+<script type="text/javascript">
+var notification = alertify.notify('Vous êtes déconnecté', 'success', 5, function(){  console.log('dismissed'); });
+    
+</script>
+
 {% endblock %}
