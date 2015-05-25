@@ -14,7 +14,8 @@
 
     .leaflet-container {  /* all maps */
         width:  800px;
-        height: 600px;
+        height: 800px;
+        
     }
 </style>
 <script type="text/javascript">
@@ -27,6 +28,7 @@
         {% endfor %}
     }
 </script>
+
 
 <body>
     {% leaflet_map "yourmap" callback="window.map_init_basic"%}
