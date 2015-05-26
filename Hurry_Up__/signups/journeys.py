@@ -16,7 +16,7 @@ def query_navitia(api_call=''):
 def get_journeys():
     transports = query_navitia()
 
-    addresse_depart = query_navitia('/places?q=17 rue de l\'Égalité, Stains')
+    addresse_depart = query_navitia('/places?q=4, avenue du président Wilson, Saint-Denis')
     addresse_arrivee = query_navitia('/places?q=6 place de la Résistance, Saint-Denis')
 
     arret_depart = query_navitia('/coords/'+addresse_depart['places'][0]['id']+'/places_nearby')
