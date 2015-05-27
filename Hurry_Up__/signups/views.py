@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 #python first
 #django second
 #apps
 #local directory
-# -*- coding: utf-8 -*-
+
 
 from django.conf import settings
 from django.contrib import messages
@@ -22,7 +23,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    journey = get_journeys()
+    depart = '6 place de la résistance, Saint-Denis'
+    arrivee = '36 quai des orfèvres, Paris'
+    journey = get_journeys(depart, arrivee)
     best_route = get_best_route(journey)
     departs, arrivees = poi_departs_arrivees(best_route)
     poi_departs = get_poi_departs(departs)

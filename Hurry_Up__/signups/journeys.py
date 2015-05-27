@@ -13,11 +13,11 @@ def query_navitia(api_call=''):
     r = urllib2.urlopen(req)
     return json.loads(r.read().decode().strip())
 
-def get_journeys():
+def get_journeys(depart, arrivee):
     transports = query_navitia()
 
-    addresse_depart = query_navitia('/places?q=4, avenue du président Wilson, Saint-Denis')
-    addresse_arrivee = query_navitia('/places?q=6 place de la Résistance, Saint-Denis')
+    addresse_depart = query_navitia('/places?q=' + depart)
+    addresse_arrivee = query_navitia('/places?q=' + arrivee)
 
     arret_depart = query_navitia('/coords/'+addresse_depart['places'][0]['id']+'/places_nearby')
     arret_arrivee = query_navitia('/coords/'+addresse_arrivee['places'][0]['id']+'/places_nearby')
@@ -67,9 +67,15 @@ def get_poi_departs(departs):
         poi_departs[poi_num] = [i[1],i[0]]
     return poi_departs
 
-
-journey = get_journeys()
+depart = '6 place de la résistance, Saint-Denis'
+arrivee = '36 quai des orfèvres, Paris'
+journey = get_journeys(depart, arrivee)
 best_route = get_best_route(journey)
 departs, arrivees = poi_departs_arrivees(best_route)
 
 print(get_lines(best_route))
+
+def where(where):
+    where_call = "/coord/2.377310;48.847002"
+    where = query_navitia(where_call)
+    print where
