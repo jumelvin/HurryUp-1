@@ -24,7 +24,7 @@ initialize = function(){
   var myOptions = {
     zoom      : 14, // Zoom par défaut
     center    : latLng, // Coordonnées de départ de la carte de type latLng 
-    mapTypeId : google.maps.MapTypeId.TERRAIN, // Type de carte, différentes valeurs possible HYBRID, ROADMAP, SATELLITE, TERRAIN
+    mapTypeId : google.maps.MapTypeId.ROADMAP, // Type de carte, différentes valeurs possible HYBRID, ROADMAP, SATELLITE, TERRAIN
     maxZoom   : 20
   };
   
@@ -80,12 +80,13 @@ initialize = function(){
 calculate = function(){
     origin      = document.getElementById('origin').value; // Le point départ
     destination = document.getElementById('destination').value; // Le point d'arrivé
+    selectedMode = document.getElementById('mode').value;
     if(origin && destination){
         var request = {
             origin      : origin,
             destination : destination,
-            travelMode  : google.maps.DirectionsTravelMode.DRIVING // Mode de conduite
-        }
+            travelMode: google.maps.TravelMode[selectedMode] // Mode de conduite
+        };
         var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
         directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
             if(status == google.maps.DirectionsStatus.OK){

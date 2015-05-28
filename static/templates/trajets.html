@@ -18,6 +18,7 @@
     #container #panel{width:700px;margin:auto;}
     #container #destinationForm{margin:50px 0px 30px 0px;background:#F8F8F8;padding:10px 20px;border:solid 1px #E7E7E7;}
     #container #destinationForm input[type=text]{border:solid 1px #C0C0C0;}
+
   </style>
   <body>
     <div id="container">
@@ -35,12 +36,34 @@
                 <label class="sr-only">Destination :</label>
                 <input type="text" name="destination" class="form-control" id="destination" placeholder="Arrivée">
                 <button class="btn btn-lg btn-primary btn-block" type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">Rechercher</button>
+                <div class="btn-group">
+                      <a class="btn btn-default" type="button" onclick="calcRoute('DRIVING');"><i class="fa fa-car"></i></a>
+                      <a class="btn btn-default" type="button" onclick="calcRoute('WALKING');"><i class="fa fa-male"></i></a>
+                      <a class="btn btn-default" type="button" onclick="calcRoute('TRANSIT');"><i class="fa fa-bus"></i></a>
+                      <a class="btn btn-default" type="button" onclick="calcRoute('BICYCLING');"><i class="fa fa-bicycle"></i></a>
+                
+                </div>
+                <form id="mode">
+	<input type="button" onclick="calcRoute();" value="DRIVING">
+	<input type="button" onclick="calcRoute();" value="WALKING">
+</form>
             </form>
         </div>
             </div>
         <div class="col-md-4 text-center">
         <div id="panel"></div>
-        </div>    
+        </div>
+        
+<div>
+    <b>Mode of Travel: </b>
+    <select id="mode" onchange="calcRoute();">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
+
     </div>
     
     <!-- Include Javascript -->
