@@ -16,7 +16,7 @@
     #container{position:relative;width:auto;margin:auto;padding:20px 0px 20px 0px;margin-top:;}
     #container #map{width:auto;height:500px;margin:auto;margin-top:40px;}
     #container #panel{width:700px;margin:auto;}
-    #container #destinationForm{margin:50px 0px 30px 0px;background:#EEEEEE;padding:10px 20px;border:solid 1px #C0C0C0;}
+    #container #destinationForm{margin:50px 0px 30px 0px;background:#F8F8F8;padding:10px 20px;border:solid 1px #E7E7E7;}
     #container #destinationForm input[type=text]{border:solid 1px #C0C0C0;}
   </style>
   <body>
@@ -26,8 +26,10 @@
         <div id="map">
             <p>Veuillez patienter pendant le chargement de la carte...</p>
         </div>
+        <div class="col-md-4 text-center">
         <div id="destinationForm">
             <form action="" method="get" name="direction" id="direction">
+                <h2 class="form-signin-heading">Recherchez votre itinéraire</h2>
                 <label class="sr-only">Point de départ :</label>
                 <input type="text" name="origin" id="origin" class="form-control" placeholder="Départ">
                 <label class="sr-only">Destination :</label>
@@ -35,7 +37,10 @@
                 <button class="btn btn-lg btn-primary btn-block" type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">Rechercher</button>
             </form>
         </div>
+            </div>
+        <div class="col-md-4 text-center">
         <div id="panel"></div>
+        </div>    
     </div>
     
     <!-- Include Javascript -->

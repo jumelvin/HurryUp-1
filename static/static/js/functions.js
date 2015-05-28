@@ -5,7 +5,7 @@ var calculate;
 var direction;
 
 initialize = function(){
-  var latLng = new google.maps.LatLng(50.6371834, 3.063017400000035); // Correspond au coordonnées de Lille
+  var latLng = new google.maps.LatLng(48.856614, 2.3522219000000177); // Correspond au coordonnées de Lille
   var myOptions = {
     zoom      : 14, // Zoom par défaut
     center    : latLng, // Coordonnées de départ de la carte de type latLng 
@@ -17,10 +17,7 @@ initialize = function(){
   panel    = document.getElementById('panel');
   
   var marker = new google.maps.Marker({
-    position : latLng,
-    map      : map,
-    title    : "Lille"
-    //icon     : "marker_lille.gif" // Chemin de l'image du marqueur pour surcharger celui par défaut
+
   });
   
   var contentMarker = [
