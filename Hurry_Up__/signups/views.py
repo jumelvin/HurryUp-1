@@ -74,12 +74,14 @@ def register(request):
     return render_to_response("register.html",
                               locals(),
                               context_instance=RequestContext(request))
-                              
+@login_required                            
 def reveil(request):
 
     return render_to_response("reveil.html",
                               locals(),
                               context_instance=RequestContext(request))
+
+
 
 
 def geodjango(request):

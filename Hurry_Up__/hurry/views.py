@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from hurry.forms import ContactForm
 from hurry.forms import TrajetsForm
+from django.contrib.auth.decorators import login_required
 
 def base(request):
     return render(request, 'base.html', locals())
@@ -32,6 +33,7 @@ def contact(request):
 
     return render(request, 'contact.html', locals())
 
+@login_required
 def trajets(request):
     if request.method == 'POST':
         """s'il s'agit d'une requete POST"""
