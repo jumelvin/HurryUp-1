@@ -26,6 +26,13 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/static/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+      
+    <!-- Alertify / Notifications -->  
+    <script src="/static/js/alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="/static/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="/static/css/themes/default.min.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,8 +46,17 @@
     {% include 'navbar.html' %}
 
 {% block jumbotron %}
+      
 {% endblock %}
 
+{% block index %}
+{% endblock %}
+      
+{% block geodjango %}
+{% endblock %}
+
+{% block trajets %}
+{% endblock %}
     <div class="container">
         {% if messages %}
         <div class='row'>

@@ -1,36 +1,86 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
+
+{% block trajets %}
+
 <html>
   <head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?region=GB?language=ja?key=AIzaSyAr_jYICO2Yq018K6BIJZ39ZTEdi7klGZg">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Calcul d'itinéraire Google Map Api v3</title>
+    <link rel="stylesheet" href="/static/css/jquery-ui-1.8.12.custom.css" type="text/css" /> 
+  </head>
+  <style type="text/css">
+    body{font-family:Arial;margin:0px;padding:0px;}
+    #container{position:relative;width:auto;margin:auto;padding:20px 0px 20px 0px;margin-top:;}
+    #container #map{width:auto;height:500px;margin:auto;margin-top:40px;}
+    #container #panel{width:700px;margin:auto;}
+    #container #destinationForm{margin:50px 0px 30px 0px;background:#F8F8F8;padding:10px 20px;border:solid 1px #E7E7E7;}
+    #container #destinationForm input[type=text]{border:solid 1px #C0C0C0;}
+
+  </style>
+  <body>
+    <div id="container">
+
+        
+        <div id="map">
+            <p>Veuillez patienter pendant le chargement de la carte...</p>
+        </div>
+        <div class="col-md-4 text-center">
+        <div id="destinationForm">
+            <form action="" method="get" name="direction" id="direction">
+                <h2 class="form-signin-heading">Recherchez votre itinéraire</h2>
+                <label class="sr-only">Point de départ :</label>
+                <input type="text" name="origin" id="origin" class="form-control" placeholder="Départ">
+                <label class="sr-only">Destination :</label>
+                <input type="text" name="destination" class="form-control" id="destination" placeholder="Arrivée">
+
+                <button class="btn btn-lg btn-primary btn-block" type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">Rechercher</button>
+                <div class="btn-group">
+<div>
+    <select id="mode" onchange="javascript:calculate()" class="form-control">
+      <option value="DRIVING">Voiture</option>
+      <option value="WALKING">Piéton</option>
+      <option value="BICYCLING">Vélo</option>
+      <option value="TRANSIT">Métro</option>
+      
+    </select>
+</div>
+                   
+
+            </div>        
+            </form>
+        </div>
+            </div>
+
+        <div class="col-md-4 text-center">
+        <div id="panel"></div>
+        </div>
+    </div>
+    
+    <!-- Include Javascript -->
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.12.custom.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=fr"></script>
+    <script type="text/javascript" src="/static/js/functions.js"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('origin'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+
+            });
+        });
     </script>
     <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-  </head>
-  <body>
-<div id="map-container" class="col-md-6"></div>
-  </body>
-     <form class="form-signin">
-        <h2 class="form-signin-heading">Recherchez votre itinéraire</h2>
-        <label for="inputEmail" class="sr-only">Adresse départ</label>
-        <input type="word" id="Adress" class="word" placeholder="D'où voulez-vous partir?" required autofocus>
-        <label for="inputPassword" class="sr-only">Adresse arrivée</label>
-        <input type="word" id="word" class="form-control" placeholder="Où arriverez-vous?" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Rechercher</button>
-      </form>
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('destination'));
+            google.maps.event.addListener(places, 'place_changed', function () {
 
+
+
+    </script>
+      <h2 class="form-signin-heading">Entrez votre horaire d'arrivée</h2>
+      <input type="search" placeholder="Horaire" name="Heure d'arrivée">
 </html>
+{% endblock %}

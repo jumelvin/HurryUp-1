@@ -1,5 +1,10 @@
    {% load staticfiles %}
 
+
+{% block index %}
+{% endblock %}
+
+
    <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -57,10 +62,12 @@
             {% else %}
             <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        <li><a href='{% url "geodjango" %}'>Trajets <span class="sr-only">(current)</span></a></li>
+        <li><a href='{% url "trajets" %}'>Trajets <span class="sr-only">(current)</span></a></li>
       </ul>
       
         </div>
+            
+            
           {% endif %}
 
 

@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 #python first
 #django second
 #apps
 #local directory
-# -*- coding: utf-8 -*-
+
 
 from django.conf import settings
 from django.contrib import messages
@@ -11,6 +12,29 @@ from django.shortcuts import render, render_to_response, RequestContext, HttpRes
 
 # Create your views here.
 from .forms import SignUpForm
+
+from .journeys import *
+
+from django.contrib.auth.decorators import login_required
+
+
+#Construction de l'index a partir des fonctions crees ailleurs
+
+
+@login_required
+def index(request):
+    depart = '6 place de la résistance, Saint-Denis'
+    arrivee = '36 quai des orfèvres, Paris'
+    journey = get_journeys(depart, arrivee)
+    best_route = get_best_route(journey)
+    departs, arrivees = poi_departs_arrivees(best_route)
+    poi_departs = get_poi_departs(departs)
+    lines = get_lines(best_route)
+    context = {
+        'poi_departs': poi_departs,
+        'lines': lines
+    }
+    return render(request,"index.html",context)
 
 def home(request):
 
@@ -50,25 +74,25 @@ def register(request):
     return render_to_response("register.html",
                               locals(),
                               context_instance=RequestContext(request))
-                              
+@login_required                            
 def reveil(request):
 
     return render_to_response("reveil.html",
                               locals(),
                               context_instance=RequestContext(request))
 
-def custom_login(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect("geodjango.html")
-    else:
-        return render_to_response('404.html', {},
-                                  context_instance=RequestContext(request))
+
+
 
 def geodjango(request):
-
-    return render_to_response("geodjango.html",
+    if request.user.is_authenticated():
+        return render_to_response("geodjango.html",
                               locals(),
                               context_instance=RequestContext(request))
+    else:
+        return render_to_response('signup.html', {},
+                                  context_instance=RequestContext(request))
+    
 
 def handler404(request):
     response = render_to_response('404.html', {},

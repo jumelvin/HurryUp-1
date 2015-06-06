@@ -86,6 +86,7 @@ calculate = function(){
         var request = {
             origin      : origin,
             destination : destination,
+            provideRouteAlternatives: true,
             travelMode: google.maps.TravelMode[selectedMode] // Mode de conduite
         };
         var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
