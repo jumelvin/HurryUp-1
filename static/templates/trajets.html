@@ -49,7 +49,7 @@
 
     </select>
 </div>
-
+<div id="weather"></div>
             </div>
             </form>
         </div>
@@ -59,7 +59,7 @@
         <div id="panel"></div>
         </div>
     </div>
-    
+
     <!-- Include Javascript -->
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery-ui-1.8.12.custom.min.js"></script>
@@ -78,5 +78,24 @@
             google.maps.event.addListener(places, 'place_changed', function () {
             });
         });
+      </script>
+<script type="text/javascript">
+    // Docs at http://simpleweatherjs.com
+$(document).ready(function() {
+  $.simpleWeather({
+    location: 'Austin, TX',
+    woeid: '',
+    unit: 'f',
+    success: function(weather) {
+      html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
+  
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+  });
+});
+
       </script>
 {% endblock %}

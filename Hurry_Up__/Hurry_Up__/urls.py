@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^geodjango/$', 'signups.views.geodjango', name='geodjango'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^index/$', 'signups.views.index', name='index'),
+    url(r'^about/$', 'signups.views.about', name='about'),
 
 
 )

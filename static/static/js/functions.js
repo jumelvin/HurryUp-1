@@ -5,7 +5,6 @@ var calculate;
 var direction;
 var placeSearch, autocomplete;
 
-
 function initialize() {
   // Create the autocomplete object, restricting the search
   // to geographical location types.
@@ -30,6 +29,7 @@ initialize = function(){
   
   map      = new google.maps.Map(document.getElementById('map'), myOptions);
   panel    = document.getElementById('panel');
+
 
 
   var marker = new google.maps.Marker({
@@ -97,6 +97,9 @@ calculate = function(){
         });
     }
 };
+
+
+
 
 
 initialize();

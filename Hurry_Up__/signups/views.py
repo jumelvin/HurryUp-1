@@ -107,4 +107,8 @@ def handler500(request):
     response.status_code = 500
     return response
 
+def about(request):
 
+    return render_to_response("about.html",
+                              locals(),
+                              context_instance=RequestContext(request))
